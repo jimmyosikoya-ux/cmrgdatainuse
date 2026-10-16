@@ -1,0 +1,249 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with role-based access for CMRG field operations",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 128
+        },
+        "full_name": {
+          "type": "string",
+          "description": "User's full name",
+          "maxLength": 128
+        },
+        "role": {
+          "type": "string",
+          "description": "Access role in the CMRG platform",
+          "enum": ["admin", "supervisor", "enumerator", "analyst"]
+        },
+        "assigned_district": {
+          "type": "string",
+          "description": "Geographical operational district",
+          "maxLength": 64
+        },
+        "device_id": {
+          "type": "string",
+          "description": "Registered field device ID",
+          "maxLength": 128
+        },
+        "created_at": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "ISO timestamp of last profile update"
+        }
+      },
+      "required": ["email", "full_name", "role", "created_at"]
+    },
+    "SurveyForm": {
+      "title": "SurveyForm",
+      "description": "Versioned questionnaire definition",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the survey questionnaire",
+          "maxLength": 200
+        },
+        "version": {
+          "type": "string",
+          "description": "Semantic version e.g. v1.0.0",
+          "maxLength": 32
+        },
+        "description": {
+          "type": "string",
+          "description": "Study abstract and objective",
+          "maxLength": 1000
+        },
+        "category": {
+          "type": "string",
+          "description": "Survey category e.g. Household, Health, Agriculture",
+          "maxLength": 64
+        },
+        "status": {
+          "type": "string",
+          "description": "Lifecycle state",
+          "enum": ["draft", "published", "archived"]
+        },
+        "fields": {
+          "type": "string",
+          "description": "JSON serialized field definitions schema"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "UID of the creator",
+          "maxLength": 128
+        },
+        "submission_count": {
+          "type": "integer",
+          "description": "Number of received submissions"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "ISO timestamp of form creation"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        }
+      },
+      "required": ["title", "version", "status", "created_by", "created_at"]
+    },
+    "SurveySubmission": {
+      "title": "SurveySubmission",
+      "description": "Completed survey questionnaire submitted from the field",
+      "type": "object",
+      "properties": {
+        "form_id": {
+          "type": "string",
+          "description": "ID of the questionnaire",
+          "maxLength": 128
+        },
+        "form_title": {
+          "type": "string",
+          "description": "Title of the form at submission time",
+          "maxLength": 200
+        },
+        "case_id": {
+          "type": "string",
+          "description": "Optional assigned case reference",
+          "maxLength": 64
+        },
+        "enumerator_id": {
+          "type": "string",
+          "description": "UID of the fieldworker who recorded the survey",
+          "maxLength": 128
+        },
+        "enumerator_name": {
+          "type": "string",
+          "description": "Display name of the fieldworker",
+          "maxLength": 128
+        },
+        "data_json": {
+          "type": "string",
+          "description": "JSON serialized response values"
+        },
+        "status": {
+          "type": "string",
+          "description": "Review status of the submission",
+          "enum": ["pending_review", "approved", "rejected", "flagged"]
+        },
+        "supervisor_notes": {
+          "type": "string",
+          "description": "Audit notes provided during verification",
+          "maxLength": 2000
+        },
+        "gps_lat": {
+          "type": "number",
+          "description": "Captured GPS Latitude"
+        },
+        "gps_lng": {
+          "type": "number",
+          "description": "Captured GPS Longitude"
+        },
+        "gps_accuracy": {
+          "type": "number",
+          "description": "GPS accuracy in meters"
+        },
+        "duration_seconds": {
+          "type": "integer",
+          "description": "Total interview elapsed time in seconds"
+        },
+        "is_offline_synced": {
+          "type": "boolean",
+          "description": "Whether record was queued offline before upload"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        },
+        "synced_at": {
+          "type": "string",
+          "description": "ISO timestamp of server sync"
+        }
+      },
+      "required": ["form_id", "enumerator_id", "status", "created_at"]
+    },
+    "HouseholdCase": {
+      "title": "HouseholdCase",
+      "description": "Target sampling unit assigned to an enumerator",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Identifier or head name",
+          "maxLength": 128
+        },
+        "head_of_household": {
+          "type": "string",
+          "description": "Primary respondent name",
+          "maxLength": 128
+        },
+        "village": {
+          "type": "string",
+          "description": "Village or community name",
+          "maxLength": 128
+        },
+        "district": {
+          "type": "string",
+          "description": "Operational district",
+          "maxLength": 64
+        },
+        "contact_phone": {
+          "type": "string",
+          "description": "Contact telephone number",
+          "maxLength": 32
+        },
+        "assigned_enumerator_id": {
+          "type": "string",
+          "description": "UID of the assigned enumerator",
+          "maxLength": 128
+        },
+        "assigned_enumerator_name": {
+          "type": "string",
+          "description": "Name of assigned enumerator",
+          "maxLength": 128
+        },
+        "status": {
+          "type": "string",
+          "description": "Case visitation status",
+          "enum": ["unvisited", "in_progress", "completed", "follow_up_needed", "verified"]
+        },
+        "priority": {
+          "type": "string",
+          "description": "Target priority",
+          "enum": ["low", "medium", "high"]
+        },
+        "created_at": {
+          "type": "string",
+          "description": "ISO timestamp"
+        }
+      },
+      "required": ["title", "head_of_household", "district", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual user profile records"
+    },
+    "/forms/{formId}": {
+      "schema": "SurveyForm",
+      "description": "Survey questionnaire templates and schemas"
+    },
+    "/submissions/{submissionId}": {
+      "schema": "SurveySubmission",
+      "description": "Field survey responses"
+    },
+    "/cases/{caseId}": {
+      "schema": "HouseholdCase",
+      "description": "Target cases and sampling assignments"
+    }
+  }
+}

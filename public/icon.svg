@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#B91C1C"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  <circle cx="256" cy="256" r="210" fill="none" stroke="#DC2626" stroke-width="8" stroke-dasharray="16 12" opacity="0.6"/>
+  <!-- Central Pin Target -->
+  <g transform="translate(256, 230)">
+    <path d="M 0 -130 C -70 -130 -120 -80 -120 0 C -120 60 -50 130 0 200 C 50 130 120 60 120 0 C 120 -80 70 -130 0 -130 Z" fill="url(#redGrad)" filter="drop-shadow(0 12px 24px rgba(220,38,38,0.4))"/>
+    <circle cx="0" cy="0" r="54" fill="#FFFFFF"/>
+    <!-- CMRG Inner Monogram -->
+    <path d="M -24 -16 L -6 20 L 14 -12 L 28 20" fill="none" stroke="#DC2626" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Text Label -->
+  <text x="256" y="460" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="38" fill="#F8FAFC" text-anchor="middle" letter-spacing="4">CMRG COLLECT</text>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "short_name": "CMRG Collect",
+  "name": "CMRG Data Collect — Enterprise Field Survey Platform",
+  "description": "Offline data collection, longitudinal household cases, and automated statistical quality monitoring.",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='36' fill='%23D71920'/%3E%3Cpath d='M48 48h40v40H48zm56 0h40v40h-40zm0 56h40v40h-40zm-56 16h24v24H48z' fill='white'/%3E%3C/svg%3E",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%23D71920'/%3E%3Cpath d='M128 128h112v112H128zm144 0h112v112H272zm0 144h112v112H272zm-144 48h64v64h-64z' fill='white'/%3E%3C/svg%3E",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?mode=mobile",
+  "background_color": "#111111",
+  "theme_color": "#D71920",
+  "display": "standalone",
+  "orientation": "portrait"
+}
